@@ -1,0 +1,7 @@
+module Podcast
+  module Config
+    PROGRAMS = []
+    ROOT = ''.freeze
+    OUTPUT = 'public'.freeze
+  end
+end

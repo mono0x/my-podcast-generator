@@ -1,0 +1,14 @@
+!!! XML
+%rss{:version => '2.0', :'xmlns:itunes' => 'http://www.itunes.com/docs/podcast-1.0.dtd', :'xmlns:dc' => 'http://purl.org/dc/elements/1.1/'}
+  %channel
+    %title= program.title
+    %link= program.permalink(root)
+    %description= program.title
+
+    - parts.each do |part|
+      %item
+        %title #{part.title} #{part.date.strftime('%Y-%m-%d')}
+        %link= part.permalink(root)
+        %guid{:isPermalink => 'true'}= part.permalink(root)
+        %pubDate= part.date.to_time.rfc2822
+        %enclosure{:url => part.permalink(root), :length => part.length, :type => 'audio/x-m4a'}
