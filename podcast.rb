@@ -56,7 +56,7 @@ Podcast::Config::PROGRAMS.each do |program|
       title = m[:title]
       Podcast::Part.new(file: file, path: File.join(Podcast::Config::OUTPUT, file), date: date, title: title)
     }
-  }.select {|part| part }.sort_by {|part| part.date }
+  }.select {|part| part }.sort_by {|part| part.date }.reverse
 
   open(File.join(Podcast::Config::OUTPUT, program.file), 'w') do |f|
     f << engine.render(Object.new, root: Podcast::Config::ROOT, program: program, parts: parts)
