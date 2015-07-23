@@ -42,7 +42,7 @@ end
 
 require_relative 'config'
 
-engine = Haml::Engine.new(open('feed.haml').read, format: :xhtml, attr_wrapper: '"', escape_html: true)
+engine = Haml::Engine.new(File.read('feed.haml'), format: :xhtml, attr_wrapper: '"', escape_html: true)
 
 files = Dir.chdir(Podcast::Config::OUTPUT) { Dir['*.m4a'] }
 Podcast::Config::PROGRAMS.each do |program|
